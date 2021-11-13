@@ -16,7 +16,7 @@ public class EnderecoServiceImpl implements EnderecoService {
     EnderecoRepository repository;
 
     @Override
-    public Optional<Endereco> findByCep(String cep) {
+    public Optional<Endereco> findByCep(String cep) throws RuntimeException{
         if(!CepUtil.isValidCep(cep)) throw new RuntimeException(CepUtil.CEP_INVALIDO);
         Optional<Endereco> optional = repository.findByCep(cep);
 
