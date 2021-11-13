@@ -22,7 +22,7 @@ public class EnderecoController {
     @Autowired
     private EnderecoService service;
 
-    @GetMapping("/cep/{cep}")
+    @GetMapping(value = "/cep/{cep}", produces={"application/json"}, consumes="application/json")
     public ResponseEntity<Response<EnderecoDTO>> findByCep(@PathVariable("cep") String cep) {
         Response<EnderecoDTO> response = new Response<>();
         try {

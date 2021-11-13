@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS ENDERECO(ID INT PRIMARY KEY AUTO_INCREMENT, RUA VARCHAR(255), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), ESTADO VARCHAR(255), CEP VARCHAR(255));
-
+CREATE TABLE IF NOT EXISTS USUARIO(ID INT PRIMARY KEY AUTO_INCREMENT, SENHA varchar(255), EMAIL varchar(100));
 
 INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Avenida Paulista - de 1300/1301 a 1498/1499', 'Sede', 'São Paulo','São Paulo', '15370496');
 INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Avenida Paulista - de 1700/1701 a 1798/1799', 'Vila São Francisco de Assis', 'São Paulo','São Paulo', '17560250');
@@ -11,3 +11,7 @@ INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Largo do Brás'
 INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Rua Jairo Gois', 'Brás', 'São Paulo','São Paulo', '03004010');
 INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Avenida Interlagos - de 3172 a 3890 - lado pa', 'Jardim Marajoara', 'São Paulo','São Paulo', '04660006');
 INSERT INTO ENDERECO (rua, bairro, cidade, estado, cep) values ('Avenida Interlagos - de 3495 a 4501 - lado ímpar', 'Jardim Umuarama', 'São Paulo','São Paulo', '04661300');
+
+-- Senha do usuario: Usuario123
+INSERT INTO USUARIO(senha, email) values ('$2a$10$jNb7CjFxo8OZjWp3HqL.ouu/ldUzeNEYjAs0KLdBEp6h5AVSxE2ZO', 'usuario@teste.com');
+INSERT INTO USUARIO(email) values ('development@swagger.usuario');

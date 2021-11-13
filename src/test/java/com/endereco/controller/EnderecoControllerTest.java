@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -37,6 +38,7 @@ public class EnderecoControllerTest {
     MockMvc mvc;
 
     @Test
+    @WithMockUser
     public void findByCep() throws Exception {
         Endereco endereco = getEndereco("Avenida Paulista - de 1300/1301 a 1498/1499", "Sede",
                 "São Paulo","São Paulo", "15370496");
@@ -54,6 +56,7 @@ public class EnderecoControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void findByCepChangeByPositionTest() throws Exception {
         Endereco endereco = getEndereco("Rua Carlos Gomes - até 99998 - lado par", "Sede",
                 "Pereira Barreto","São Paulo", "15370400");
@@ -71,6 +74,7 @@ public class EnderecoControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void findByCepInvalidTest() throws Exception {
         BDDMockito.given(service.findByCep("153704960"))
             .willThrow(new RuntimeException(CepUtil.CEP_INVALIDO));
@@ -83,6 +87,7 @@ public class EnderecoControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void findByCepNotFoundTest() throws Exception {
         BDDMockito.given(service.findByCep("15370498"))
                 .willReturn(Optional.empty());
