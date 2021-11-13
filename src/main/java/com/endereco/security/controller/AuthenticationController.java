@@ -4,6 +4,7 @@ import com.endereco.domain.response.Response;
 import com.endereco.security.dto.JwtAuthenticationDTO;
 import com.endereco.security.dto.TokenDTO;
 import com.endereco.security.util.JwtTokenUtil;
+import com.endereco.util.LoggerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,6 +40,8 @@ public class AuthenticationController {
     public ResponseEntity<Response<TokenDTO>> gerarTokenJwt(
             @Valid @RequestBody JwtAuthenticationDTO authenticationDto, BindingResult result)
             throws AuthenticationException {
+        LoggerUtil.logger.info("AuthenticationController - gerarTokenJwt");
+
         Response<TokenDTO> response = new Response<TokenDTO>();
 
         if (result.hasErrors()) {

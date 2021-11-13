@@ -4,6 +4,7 @@ import com.endereco.domain.entity.Endereco;
 import com.endereco.repository.EnderecoRepository;
 import com.endereco.service.EnderecoService;
 import com.endereco.util.CepUtil;
+import com.endereco.util.LoggerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public Optional<Endereco> findByCep(String cep) throws RuntimeException{
+        LoggerUtil.logger.info("EnderecoService - findByCep");
+
         if(!CepUtil.isValidCep(cep)) throw new RuntimeException(CepUtil.CEP_INVALIDO);
         Optional<Endereco> optional = repository.findByCep(cep);
 
@@ -28,6 +31,8 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     private Optional<Endereco> findByCepChangeByPosition(String cep) {
+        LoggerUtil.logger.info("EnderecoService - findByCepChangeByPosition");
+
         Optional<Endereco> optional = Optional.empty();
         int index = cep.length() - 1;
         do {
